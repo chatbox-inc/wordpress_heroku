@@ -9,10 +9,10 @@
 	],
 	"env": {
 		"AWS_ACCESS_KEY_ID": {
-			"description": "AWSのアクセスKeyを入力してください"
+			"description": "AWSのアクセスキーを入力してください"
 		},
 		"AWS_SECRET_ACCESS_KEY": {
-			"description": "AWSのアクセスKeyを入力してください"
+			"description": "AWSのシークレットキーを入力してください"
 		}
 	},
 	"addons": [
