@@ -19,6 +19,6 @@
 		"cleardb"
 	],
 	"buildpacks": [
-		{ "url": "https://elements.heroku.com/buildpacks/heroku/heroku-buildpack-php" }
+		{ "url": "heroku/php" }
 	]
 }
