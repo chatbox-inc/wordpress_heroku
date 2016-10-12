@@ -1,0 +1,20 @@
+path: wordpress
+url: http://cb-heroku-wordpress.herokuapp.com/
+user: admin
+color: false
+
+core download:
+  locale: ja
+  version: 4.5
+core install:
+    admin_user: admin
+    url: http://cb-heroku-wordpress.herokuapp.com/
+    admin_password: admin
+    admin_email: "admin@admin.jp"
+    title: "Wordpress cli test site"
+plugin install:
+    - amazon-web-services 
+    - amazon-s3-and-cloudfront  
+plugin activate:
+    - amazon-web-services 
+    - amazon-s3-and-cloudfront
