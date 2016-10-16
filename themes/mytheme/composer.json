@@ -1,0 +1,5 @@
+{
+    "name": "wordpress/mytheme",
+    "type" : "wordpress-theme",
+    "require": {}
+}

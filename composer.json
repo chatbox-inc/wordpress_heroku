@@ -1,21 +1,33 @@
 {
-    "name": "user/test",
+    "name": "chatbox-inc/wordpress-heroku",
     "authors": [
         {
             "name": "44x1carbon",
             "email": "b4079@oic.jp"
         }
     ],
+    "repositories":[
+        {
+            "type" : "path",
+            "url" : "./themes/mytheme/"
+        }
+    ],
     "require": {
-        "wp-cli/wp-cli": "^0.24.1"
+        "wp-cli/wp-cli": "^0.24.1",
+        "vlucas/phpdotenv": "^2.4",
+        "wordpress/mytheme": "dev-master",
+        "composer/installers": "^1.2"
     },
     "scripts": {
+        "pre-install-cmd": [],
         "post-install-cmd": [
-            "vendor/bin/wp core download --allow-root",
-            "cp ./wp-config.local.php ./wordpress/wp-config.php",
-            "vendor/bin/wp core install --allow-root",
-            "vendor/bin/wp plugin install --allow-root",
-            "vendor/bin/wp plugin activate --allow-root"
+            "make install"
         ]
+    },
+    "extra": {
+        "installer-paths": {
+            "wordpress/wp-content/themes/{$name}": ["type:wordpress-theme"],
+            "wordpress/wp-content/plugins/{$name}": ["type:wordpress-plugin"]
+        }
     }
 }

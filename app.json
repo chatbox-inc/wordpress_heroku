@@ -2,21 +2,32 @@
 	"name": "heroku-wordpress-wp-cli",
 	"description": "Template for deploying WordPress to Heroku",
 	"repository": "https://github.com/chatbox-inc/wordpress_heroku.git",
-	"success_url": "/",
+	"success_url": "/wp-admin/",
 	"keywords": [
 		"wordpress",
 		"wp-cli"
 	],
 	"env": {
+		"FORCE_HTTPS": {
+			"description": "httpsを使用",
+			"value": "true"
+		},
+		"WP_LANG": {
+			"description": "Wordpress の言語設定",
+			"value": "ja"
+		},
 		"AWS_ACCESS_KEY_ID": {
-			"description": "AWSのアクセスキーを入力してください"
+			"description": "AWSのアクセスキーを入力してください",
+			"required" : false
 		},
 		"AWS_SECRET_ACCESS_KEY": {
-			"description": "AWSのシークレットキーを入力してください"
+			"description": "AWSのシークレットキーを入力してください",
+			"required" : false
 		}
 	},
 	"addons": [
-		"cleardb"
+		"cleardb",
+		"papertrail"
 	],
 	"buildpacks": [
 		{ "url": "heroku/php" }

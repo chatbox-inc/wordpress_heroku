@@ -7,14 +7,23 @@ core download:
   locale: ja
   version: 4.5
 core install:
+    url: http://localhost:8000/
     admin_user: admin
-    url: http://cb-heroku-wordpress.herokuapp.com/
     admin_password: admin
     admin_email: "admin@admin.jp"
     title: "Wordpress cli test site"
 plugin install:
-    - amazon-web-services 
-    - amazon-s3-and-cloudfront  
-plugin activate:
-    - amazon-web-services 
+    - amazon-web-services
     - amazon-s3-and-cloudfront
+    - contact-form-7
+    - query-monitor
+    - wordpress-importer
+    - all-in-one-seo-pack
+    - categories-images
+plugin activate:
+    - amazon-web-services
+    - amazon-s3-and-cloudfront
+    - contact-form-7
+    - query-monitor
+    - all-in-one-seo-pack
+    - categories-images

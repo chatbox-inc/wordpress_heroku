@@ -1,18 +1,37 @@
 <?php
-$url = parse_url(getenv('CLEARDB_DATABASE_URL'));
+require __DIR__ . "/../vendor/autoload.php";
 
-// ** MySQL settings ** //
-/** The name of the database for WordPress */
-define('DB_NAME', substr($url["path"], 1));
+$dotenv = new Dotenv\Dotenv(__DIR__."/../");
+$dotenv->load();
 
-/** MySQL database username */
-define('DB_USER', $url["user"]);
+if($url = getenv("CLEARDB_DATABASE_URL")){
+    $url = parse_url($url);
+    // ** MySQL settings ** //
+    /** The name of the database for WordPress */
+    define('DB_NAME', substr($url["path"], 1));
 
-/** MySQL database password */
-define('DB_PASSWORD', $url["pass"]);
+    /** MySQL database username */
+    define('DB_USER', $url["user"]);
 
-/** MySQL hostname */
-define('DB_HOST',  $url["host"]);
+    /** MySQL database password */
+    define('DB_PASSWORD', $url["pass"]);
+
+    /** MySQL hostname */
+    define('DB_HOST',  $url["host"]);
+}else{
+    // ** MySQL settings ** //
+    /** The name of the database for WordPress */
+    define('DB_NAME', getenv("DB_NAME"));
+
+    /** MySQL database username */
+    define('DB_USER',  getenv("DB_USER"));
+
+    /** MySQL database password */
+    define('DB_PASSWORD',  getenv("DB_PASSWORD"));
+
+    /** MySQL hostname */
+    define('DB_HOST',   getenv("DB_HOST"));
+}
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
@@ -33,11 +52,17 @@ define('NONCE_SALT',       'Bd|p.>dAIUZS+G/~Q3egyXw%jA[c1+QRu/n+F5/a=n#b3B1!eIW!
 $table_prefix = 'wp_';
 
 
-define('WP_DEBUG', true );
-define('WP_POST_REVISIONS', 50 );
-define("WP_SITEURL", "http://" . $_SERVER["HTTP_HOST"]);
-define("WP_HOME", "http://" . $_SERVER["HTTP_HOST"]);
-define('WP_LANG', 'ja');
+define('WP_DEBUG', getenv("WP_DEBUG") );
+define('WP_POST_REVISIONS', getenv("WP_DEBUG") ?? 50 );
+
+$schema = $_SERVER["HTTP_X_FORWARDED_PROTO"] ?? "http";
+define("WP_SITEURL", $schema . "://" . $_SERVER["HTTP_HOST"]);
+define("WP_HOME", $schema . "://" . $_SERVER["HTTP_HOST"]);
+define('WP_LANG', getenv("WP_LANG"));
+if($schema === "https"){
+    $_SERVER["HTTPS"] = "on";
+}
+
 
 /**
  * AWS Plugin Auth Keys
