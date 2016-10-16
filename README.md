@@ -18,4 +18,7 @@ Heroku Buttonはあくまでサンプル挙動確認の為のもの
 
 ## Heroku 環境向けカスタマイズ
 
-Heroku 環境の構築で、
+Heroku 対応のため、https 周りの設定に一部カスタマイズが加えられています。  
+(wp-config.local.php 参照)
+
+

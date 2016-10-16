@@ -53,7 +53,7 @@ $table_prefix = 'wp_';
 
 
 define('WP_DEBUG', getenv("WP_DEBUG") );
-define('WP_POST_REVISIONS', getenv("WP_DEBUG") ?? 50 );
+define('WP_POST_REVISIONS', getenv("WP_POST_REVISIONS") ?? 50 );
 
 $schema = $_SERVER["HTTP_X_FORWARDED_PROTO"] ?? "http";
 define("WP_SITEURL", $schema . "://" . $_SERVER["HTTP_HOST"]);
